@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to PixelBay</h1>
+      <p>This is a simple SQLite database example.</p>
+      <p>To get started, you can check the following:</p>
+      <ul class="list"></ul>
+      <p>Make sure to have the SQLite database set up correctly.</p>
+      <p>For more information, visit our <a href="/help">Help Page</a>.</p>
+    </main>
+    <script>
+      const url = "http://localhost:3000/";
+
+      const fetchData = async (url) => {
+        try {
+          const response = await fetch(url);
+          const json = await response.json();
+          return { ok: response.ok, data: json };
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          return { ok: false, data: null };
+        }
+      };
+
+      const displayTables = async () => {
+        try {
+          const { ok, data: tables } = await fetchData(url + "meta/tables");
+          if (!ok || !tables) {
+            throw new Error("Failed to fetch table list");
+          }
+
+          const list = document.querySelector(".list");
+
+          for (const table of tables) {
+            const { ok: tableOk } = await fetchData(
+              url + table.name.replace(/_/g, "-")
+            );
+
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+
+            link.href = tableOk ? `/${table.name.replace(/_/g, "-")}` : "#";
+            link.textContent = table.name.replace(/_/g, " ");
+
+            if (!tableOk) {
+              link.style.opacity = "0.5";
+              link.style.pointerEvents = "none";
+              link.style.cursor = "default";
+              link.title = "Lien inactif (erreur de chargement)";
+            }
+
+            listItem.appendChild(link);
+            list.appendChild(listItem);
+          }
+        } catch (error) {
+          console.error("Error displaying tables:", error);
+        }
+      };
+
+      displayTables();
+    </script>
+  </body>
+</html>

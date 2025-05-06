@@ -1,0 +1,34 @@
+# Ignorer les fichiers de sauvegarde
+*.bak
+*.backup
+
+# Ignorer les fichiers temporaires
+*.tmp
+*.temp
+
+# Ignorer les fichiers générés par le système
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers générés par VS Code
+.vscode/
+*.code-workspace
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les fichiers spécifiques à l'environnement
+.env
+
+# Ignorer les dossiers node_modules
+node_modules/
+
+# Ignorer les fichiers de configuration pour Node.js ou Bun
+bun.lockb
+package-lock.json
+yarn.lock
+
+# Custom ignore rules
+
+.documentation/reponses/*
+sqlite-queries/0.01-exos/*

@@ -1,0 +1,13 @@
+Date,Chiffre d'affaires,Dépenses,Nouveaux clients,Taux de conversion,Produits vendus,Satisfaction client,Objectif atteint,Promotion en cours
+2025-01-01,50000,30000,120,5.5,200,4.5,true,false
+2025-02-01,52000,32000,130,5.8,210,4.6,true,false
+2025-03-01,58000,31000,150,6.0,220,4.8,true,true
+2025-04-01,60000,33000,160,6.2,230,4.7,true,true
+2025-05-01,62000,35000,170,6.5,240,4.9,true,false
+2025-06-01,65000,34000,180,6.8,250,5.0,false,false
+2025-07-01,70000,36000,200,7.0,270,5.2,true,true
+2025-08-01,68000,37000,190,6.9,260,5.3,false,false
+2025-09-01,72000,38000,210,7.2,280,5.4,true,true
+2025-10-01,75000,39000,220,7.5,290,5.5,true,false
+2025-11-01,77000,40000,230,7.8,300,5.7,true,false
+2025-12-01,80000,42000,250,8.0,320,5.8,true,true
