@@ -7,7 +7,11 @@
 [![Hono](https://img.shields.io/badge/Hono-4.7.8-orange)](https://hono.dev/)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)](https://github.com/alternative-rvb/pixelbay-sqlite/pulls)
 
-PixelBay SQLite est un projet conçu pour démontrer l'utilisation de SQLite comme solution de base de données légère pour gérer des jeux de données de gestion et s'entraîner aux requêtes SQL ainsi qu'au développement JavaScript pour manipuler ces données. Le projet inclut également des exercices pratiques en JavaScript et des démonstrations d'API REST utilisant Bun et Hono.
+PixelBay SQLite est un projet développé avec Bun, Hono et SQLite comme solution de base de données légère.
+
+Ce projet permet de gérer des jeux de données de gestion et s'entraîner aux requêtes SQL ainsi qu'au développement JavaScript pour manipuler ces données.
+
+Le projet inclut également des exercices pratiques en JavaScript et des démonstrations d'API REST utilisant Bun et Hono.
 
 ## Fonctionnalités
 
@@ -19,8 +23,8 @@ PixelBay SQLite est un projet conçu pour démontrer l'utilisation de SQLite com
 ## Prérequis
 
 - **SQLite** : Assurez-vous que SQLite est installé sur votre système.
-- **Bun** : Nécessaire pour exécuter les exemples d'API REST.
 - **Node.js** : Pour les exercices JavaScript.
+- **Bun** : Nécessaire pour exécuter les exemples d'API REST.
 
 ## Installation
 
