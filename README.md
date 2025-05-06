@@ -1,5 +1,12 @@
 # PixelBay SQLite
 
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![SQLite](https://img.shields.io/badge/SQLite-3.49.1-blue)](https://sqlite.org/)
+[![Bun](https://img.shields.io/badge/Bun-1.2.11-green)](https://bun.sh/)
+[![Node.js](https://img.shields.io/badge/Node.js-22.12.0-green)](https://nodejs.org/)
+[![Hono](https://img.shields.io/badge/Hono-4.7.8-orange)](https://hono.dev/)
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)](https://github.com/alternative-rvb/pixelbay-sqlite/pulls)
+
 PixelBay SQLite est un projet conçu pour démontrer l'utilisation de SQLite comme solution de base de données légère pour gérer des jeux de données de gestion et s'entraîner aux requêtes SQL ainsi qu'au développement JavaScript pour manipuler ces données. Le projet inclut également des exercices pratiques en JavaScript et des démonstrations d'API REST utilisant Bun et Hono.
 
 ## Fonctionnalités
@@ -23,18 +30,34 @@ PixelBay SQLite est un projet conçu pour démontrer l'utilisation de SQLite com
     cd pixelbay-sqlite
     ```
 
-2. Installez Bun si ce n'est pas déjà fait :
+1. Exécutez le script Bash pour configurer la base de données SQLite :
+    ```bash
+    bash setup-pixelbay-sqlite.sh
+    ```
+
+1. Exécutez les requêtes SQL générées par le script
+    à l'aide de SQLite :
+    ```
+    sqlite-queries/0.00-init/0.01-create_schema_and_data.sql
+    ```
+
+1. Installez Bun si ce n'est pas déjà fait :
     ```bash
     curl https://bun.sh/install | bash
     ```
 
-3. Lancez l'application principale ou explorez les exercices :
+1. Installez les dépendances du projet avec Bun :
+    ```bash
+    bun install
+    ```
+
+1. Lancez l'application principale ou explorez les exercices :
     ```bash
     # Exemple pour lancer un script principal
     bun server.js
     ```
 
-4. Pour les exercices JavaScript et API REST, suivez les instructions spécifiques dans les sous-dossiers correspondants.
+Pour les exercices JavaScript et API REST, suivez les instructions spécifiques dans les sous-dossiers correspondants.
 
 ## Utilisation
 
@@ -58,4 +81,4 @@ Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plu
 
 ## Auteur
 
-- [Alternative RVB](https://github.com/alternative-rvb) - Développeur principal et mainteneur du projet.
+[Alternative RVB](https://github.com/alternative-rvb) - Développeur principal et mainteneur du projet.
