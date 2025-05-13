@@ -9,6 +9,9 @@ import salesRoute from "./routes/sales.routes.js";
 
 const app = new Hono();
 
+// API REST avec Hono
+// https://hono.dev/
+
 // Middleware JSON (optionnel, juste pour illustrer un use global)
 app.use("*", async (c, next) => {
   await next();
@@ -28,7 +31,8 @@ app.route("/ventes", salesRoute);
 // 404
 app.notFound((c) => c.text("404 - Ressource non trouvée", 404));
 
-// Test
+// Test de l'API OData
+// https://services.odata.org/V4/Northwind/Northwind.svc/
 
 app.get("/proxy/odata", async (c) => {
   const query = c.req.query("query");

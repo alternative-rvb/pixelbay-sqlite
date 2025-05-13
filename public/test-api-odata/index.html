@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test OData via Proxy</title>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <h1>Résultats OData (Produits)</h1>
-    <ul class="list"></ul>
+    <main>
+      <h1>Résultats OData (Produits)</h1>
+      <ul class="list"></ul>
+    </main>
 
     <script>
       // 🟢 Construction de la requête OData complète
-      const odataQuery = "Products?$filter=UnitPrice gt 20&$select=ProductName,UnitPrice&$orderby=UnitPrice desc&$top=5";
+      const odataQuery = "Products";
+      // const odataQuery = "Products?$filter=UnitPrice gt 20&$select=ProductName,UnitPrice&$orderby=UnitPrice desc&$top=5";
 
       // 🔵 Construction de l'URL proxy (uniquement le paramètre 'query')
       const proxyUrl = `/proxy/odata?query=${encodeURIComponent(odataQuery)}`;
@@ -29,7 +33,7 @@
 
           list.innerHTML = ""; // Réinitialiser la liste
           if (!data.value) return;
-          
+
           data.value.forEach((item) => {
             const li = document.createElement("li");
             li.textContent = `${item.ProductName} — ${item.UnitPrice} €`;
