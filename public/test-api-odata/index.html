@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test OData via Proxy</title>
+  </head>
+  <body>
+    <h1>Résultats OData (Produits)</h1>
+    <ul class="list"></ul>
+
+    <script>
+      // 🟢 Construction de la requête OData complète
+      const odataQuery = "Products?$filter=UnitPrice gt 20&$select=ProductName,UnitPrice&$orderby=UnitPrice desc&$top=5";
+
+      // 🔵 Construction de l'URL proxy (uniquement le paramètre 'query')
+      const proxyUrl = `/proxy/odata?query=${encodeURIComponent(odataQuery)}`;
+      console.log("➡️ URL générée :", proxyUrl);
+      const list = document.querySelector(".list");
+
+      const fetchData = async () => {
+        try {
+          list.innerHTML = "Wait..."; // Réinitialiser la liste
+          const response = await fetch(proxyUrl);
+          if (!response.ok) throw new Error("Erreur réseau");
+
+          const data = await response.json();
+          console.log("Réponse OData :", data);
+
+          list.innerHTML = ""; // Réinitialiser la liste
+          if (!data.value) return;
+          
+          data.value.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = `${item.ProductName} — ${item.UnitPrice} €`;
+            list.appendChild(li);
+          });
+        } catch (err) {
+          console.error("Erreur fetch :", err);
+        }
+      };
+
+      fetchData();
+    </script>
+  </body>
+</html>
