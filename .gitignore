@@ -30,5 +30,5 @@ yarn.lock
 
 # Custom ignore rules
 
-.documentation/reponses/*
-sqlite-queries/0.01-exos/*
+*/reponses/*
+*/0.01-exos/*
