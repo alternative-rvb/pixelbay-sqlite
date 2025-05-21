@@ -213,7 +213,51 @@ GROUP BY a.nom_agence;
 
 ---
 
-## ℹ️ Points à connaître
+## ℹ️ Points à connaître (par ordre de priorité)
+
+| Niveau | Pratique                                      | Pourquoi c’est utile                                    |
+| ------ | --------------------------------------------- | ------------------------------------------------------- |
+| 🥇      | `SELECT ... FROM`                             | Requête de base                                         |
+| 🥇      | `WHERE`                                       | Filtrage simple (égalité, comparaison)                  |
+| 🥇      | `AND` / `OR`                                  | Combiner des conditions                                 |
+| 🥇      | `IN (...)`                                    | Filtrer sur une liste de valeurs                        |
+| 🥇      | `BETWEEN ... AND`                             | Intervalle de valeurs                                   |
+| 🥇      | `IS NULL` / `IS NOT NULL`                     | Tester les valeurs manquantes                           |
+| 🥇      | `ORDER BY`                                    | Trier les résultats                                     |
+| 🥇      | `LIMIT` / `FETCH FIRST`                       | Limiter le nombre de lignes retournées                  |
+| 🥇      | `OFFSET`                                      | Paginer les résultats                                   |
+| 🥇      | `JOIN` (`INNER JOIN`)                         | Lier deux tables                                        |
+| 🥇      | `LEFT JOIN`                                   | Inclure toutes les lignes de la table principale        |
+| 🥇      | `COUNT(*)`, `SUM()`, `AVG()`                  | Fonctions d’agrégation de base                          |
+| 🥇      | `GROUP BY`                                    | Regrouper les données pour les calculs                  |
+| 🥇      | `HAVING`                                      | Filtrer après un `GROUP BY`                             |
+| 🥈      | `DISTINCT`                                    | Éliminer les doublons                                   |
+| 🥈      | `LIKE`                                        | Filtrer avec motifs simples                             |
+| 🥈      | `REGEXP_LIKE()`                               | Filtrage avec motifs complexes                          |
+| 🥈      | `NVL(colonne, 0)`                             | Remplacer les `NULL` dans les calculs                   |
+| 🥈      | `TO_DATE()`                                   | Convertir une chaîne en date Oracle                     |
+| 🥈      | `CASE`                                        | Expressions conditionnelles dans `SELECT` ou `WHERE`    |
+| 🥈      | `UNION` / `UNION ALL`                         | Combiner des requêtes                                   |
+| 🥈      | `EXISTS` / `NOT EXISTS`                       | Tester l’existence ou l’absence de lignes               |
+| 🥈      | `COALESCE()`                                  | Premier champ non nul (alternative à NVL plus souple)   |
+| 🥈      | `HAVING COUNT(*) > 1`                         | Détecter les doublons après groupement                  |
+| 🥉      | `GROUP BY ROLLUP`                             | Totaux cumulés (hiérarchie)                             |
+| 🥉      | `GROUP BY CUBE`                               | Totaux toutes combinaisons possibles                    |
+| 🥉      | `GROUPING SETS`                               | Totaux personnalisés                                    |
+| 🥉      | `SUM(CASE WHEN ...)`                          | Comptage conditionnel                                   |
+| 🥉      | `COUNT(DISTINCT colonne)`                     | Nombre de valeurs uniques                               |
+| 🥉      | `HAVING` avec agrégats complexes              | Filtrage avancé des groupes                             |
+| 🧠      | `PARTITION BY`                                | Regrouper les lignes sans les agréger                   |
+| 🧠      | `ROW_NUMBER()`                                | Numéro de ligne unique dans une partition               |
+| 🧠      | `RANK()` / `DENSE_RANK()`                     | Classement avec ou sans saut de rang                    |
+| 🧠      | `LAG()` / `LEAD()`                            | Comparaison avec la ligne précédente ou suivante        |
+| 🧠      | `NTILE(n)`                                    | Diviser les lignes en n groupes égaux                   |
+| 🧠      | `WINDOW`                                      | Définir des fenêtres personnalisées                     |
+| 🔧      | `WITH` (CTE)                                  | Lisibilité et réutilisation des sous-requêtes           |
+| 🔧      | `MINUS` / `INTERSECT`                         | Différence ou intersection de deux requêtes             |
+| 🔧      | `ROWNUM`                                      | Ancienne méthode pour limiter les lignes (Oracle < 12c) |
+| 🔧      | `MAX()`, `MIN()`, `VARIANCE()`, `STDDEV()`    | Statistiques utiles                                     |
+| 🔧      | `TRUNC()`, `ADD_MONTHS()`, `MONTHS_BETWEEN()` | Fonctions temporelles pratiques                         |
 
 | Pratique              | Pourquoi c’est utile                                 |
 | --------------------- | ---------------------------------------------------- |
@@ -221,54 +265,3 @@ GROUP BY a.nom_agence;
 | `TO_DATE()`           | Pour gérer les dates au format Oracle.               |
 | Vues ou sous-requêtes | Pour éviter des `JOIN` complexes dans AXML.          |
 | `ORDER BY` + `LIMIT`  | Pour trier et restreindre le résultat (si supporté). |
-| `WITH`                | Pour créer des sous-requêtes temporaires.            |
-| `UNION`               | Pour combiner plusieurs requêtes.                    |
-| `ROLLUP`              | Pour des totaux intermédiaires dans les agrégats.    |
-| `HAVING`              | Pour filtrer les résultats d’un `GROUP BY`.           |
-| `CASE`                | Pour des conditions complexes dans les sélections.   |
-| `COALESCE()`          | Pour gérer les valeurs manquantes.                   |
-| `DISTINCT`            | Pour éviter les doublons dans les résultats.         |
-| `ORDER BY`            | Pour trier les résultats selon un ou plusieurs champs. |
-| `LIMIT`               | Pour restreindre le nombre de résultats retournés.    |
-| `OFFSET`              | Pour paginer les résultats.                          |
-| `FETCH FIRST`         | Pour limiter le nombre de lignes retournées.         |
-| `ROWNUM`             | Pour limiter le nombre de lignes dans une requête.   |
-| `EXISTS`              | Pour vérifier l’existence de lignes dans une sous-requête. |
-| `NOT EXISTS`          | Pour vérifier l'absence de lignes dans une sous-requête. |
-| `UNION ALL`           | Pour combiner les résultats de plusieurs requêtes sans éliminer les doublons. |
-| `INTERSECT`           | Pour obtenir les lignes communes entre deux requêtes. |
-| `MINUS`               | Pour obtenir les lignes d'une requête qui ne sont pas dans une autre. |
-| `WITH ROLLUP`         | Pour obtenir des totaux cumulés dans les résultats.  |
-| `WITH CUBE`           | Pour obtenir des totaux cumulés sur plusieurs dimensions. |
-| `GROUPING SETS`       | Pour définir des ensembles de regroupement personnalisés. |
-| `PARTITION BY`        | Pour diviser les résultats en partitions pour les fonctions analytiques. |
-| `WINDOW`              | Pour définir des fenêtres pour les fonctions analytiques. |
-| `LAG()`               | Pour accéder à la valeur d'une ligne précédente dans une partition. |
-| `LEAD()`              | Pour accéder à la valeur d'une ligne suivante dans une partition. |
-| `RANK()`              | Pour attribuer un rang à chaque ligne dans une partition. |
-| `DENSE_RANK()`        | Pour attribuer un rang sans sauter de valeurs en cas de doublons. |
-| `NTILE(n)`            | Pour diviser les résultats en n groupes égaux.       |
-| `ROW_NUMBER()`        | Pour attribuer un numéro de ligne unique à chaque ligne dans une partition. |
-| `SUM()`               | Pour calculer la somme des valeurs d'une colonne.    |
-| `AVG()`               | Pour calculer la moyenne des valeurs d'une colonne.  |
-| `COUNT()`             | Pour compter le nombre de lignes ou de valeurs non nulles. |
-| `MAX()`               | Pour obtenir la valeur maximale d'une colonne.       |
-| `MIN()`               | Pour obtenir la valeur minimale d'une colonne.       |
-| `STDDEV()`            | Pour calculer l'écart type des valeurs d'une colonne. |
-| `VARIANCE()`          | Pour calculer la variance des valeurs d'une colonne.  |
-| `SUM(CASE WHEN condition THEN 1 ELSE 0 END)` | Pour compter les lignes qui répondent à une condition. |
-| `COUNT(DISTINCT colonne)` | Pour compter les valeurs uniques d'une colonne.     |
-| `GROUP BY ROLLUP(colonne)` | Pour obtenir des totaux cumulés sur une colonne.   |
-| `GROUP BY CUBE(colonne)` | Pour obtenir des totaux cumulés sur plusieurs colonnes. |
-| `GROUP BY GROUPING SETS(colonne1, colonne2)` | Pour obtenir des totaux cumulés sur des ensembles de colonnes. |
-| `HAVING COUNT(*) > 1` | Pour filtrer les groupes ayant plus d'une ligne.    |
-| `HAVING SUM(montant) > 10000` | Pour filtrer les groupes ayant un montant total supérieur à 10 000. |
-| `HAVING AVG(montant) < 1000` | Pour filtrer les groupes ayant une moyenne inférieure à 1 000. |
-| `HAVING MAX(date_operation) < TO_DATE('2024-01-01', 'YYYY-MM-DD')` | Pour filtrer les groupes dont la date maximale est antérieure au 1er janvier 2024. |
-| `HAVING MIN(montant) IS NOT NULL` | Pour filtrer les groupes ayant au moins une valeur non nulle. |
-| `HAVING COUNT(DISTINCT colonne) > 1` | Pour filtrer les groupes ayant plus d'une valeur unique. |
-| `HAVING SUM(CASE WHEN condition THEN 1 ELSE 0 END) > 0` | Pour filtrer les groupes ayant au moins une ligne répondant à une condition. |
-| `HAVING COUNT(*) > 0` | Pour filtrer les groupes ayant au moins une ligne.   |
-| `HAVING COUNT(*) = 0` | Pour filtrer les groupes n'ayant aucune ligne.       |
-| `HAVING COUNT(*) BETWEEN 1 AND 10` | Pour filtrer les groupes ayant entre 1 et 10 lignes. |
-| `HAVING COUNT(*) > (SELECT AVG(count) FROM (SELECT COUNT(*) AS count FROM GL GROUP BY project_id))` | Pour filtrer les groupes ayant plus de lignes que la moyenne. |
